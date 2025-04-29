@@ -703,11 +703,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 09dc2a900da8f4d02a57aa2e3dc1d7cc, type: 3}
   - {fileID: 21300000, guid: 1bf19b73e181a435a967a08afe7a19b3, type: 3}
   - {fileID: 21300000, guid: 6f41a3fdbe30e401f9614bc9effe1f88, type: 3}
+  - {fileID: 21300000, guid: 2b1857dd8a41541fc80e473e56d1c5b2, type: 3}
+  - {fileID: 21300000, guid: 90d8b19e45af14a968a2ea0325a27519, type: 3}
+  - {fileID: 21300000, guid: 8f92de71a174d47da9a88a81f9cfef3d, type: 3}
   cutsceneTexts:
   - Nathan has protected this village for centuries.
   - Until a entity too powerful began causing mayhem!
   - He challenged the demon to curse him only and spare the village.
   - The demon listened, and sent Nathan deep into the underworld
+  - Kill monsters and collect Blood Essence Coins to upgrade your gear.
+  - Summon and defeat the demon to free the curse.
+  - '                                  '
   displayImage: {fileID: 514608368}
   displayText: {fileID: 1347591607}
   fadeOverlay: {fileID: 1663461553}
