@@ -50,6 +50,9 @@ TagManager:
   - name: Player
     uniqueID: 1948322365
     locked: 0
+  - name: Enemy
+    uniqueID: 168922595
+    locked: 0
   - name: Anvil
     uniqueID: 302209137
     locked: 0
