@@ -4,34 +4,35 @@ public class DemonBoss : MonoBehaviour
 {
     public GameObject fireballPrefab;
     public Transform firePoint;
-    public float shootInterval = 3f;
+    public float fireballInterval = 1f;
+    public float summonInterval = 5f;
     public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
 
-    private float fireTimer;
+    private float fireballTimer;
     private float summonTimer;
 
     void Start()
     {
-        fireTimer = shootInterval;
-        summonTimer = 5f;
+        fireballTimer = fireballInterval;
+        summonTimer = summonInterval;
     }
 
     void Update()
     {
-        fireTimer -= Time.deltaTime;
+        fireballTimer -= Time.deltaTime;
         summonTimer -= Time.deltaTime;
 
-        if (fireTimer <= 0f)
+        if (fireballTimer <= 0f)
         {
             ShootFireball();
-            fireTimer = shootInterval;
+            fireballTimer = fireballInterval; // reset timer
         }
 
         if (summonTimer <= 0f)
         {
             SummonEnemies();
-            summonTimer = 5f;
+            summonTimer = summonInterval; // reset timer
         }
     }
 
@@ -40,15 +41,15 @@ public class DemonBoss : MonoBehaviour
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player)
         {
-            Vector2 direction = (player.transform.position - transform.position).normalized;
+            Vector2 direction = (player.transform.position - firePoint.position).normalized;
             GameObject fireball = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
-            fireball.GetComponent<Rigidbody2D>().velocity = direction * 6f;
+            fireball.GetComponent<Fireball>().SetDirection(direction);
         }
     }
 
     void SummonEnemies()
     {
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++) // spawn 2 enemies at random points
         {
             var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             var enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
