@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 2699805318712654847}
   - component: {fileID: 8537696947579770227}
   - component: {fileID: 4041718355803785616}
+  - component: {fileID: 1118146871571954982}
   m_Layer: 0
   m_Name: Demon
   m_TagString: Untagged
@@ -91,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 5434097372080827761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.17, y: 1.45, z: 0}
+  m_LocalPosition: {x: -36.705116, y: -52.881073, z: 0}
   m_LocalScale: {x: 0.23, y: 0.23, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -240,7 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 6371271166201831178, guid: 37c6be1e8dd2f4517b971a5816d59d10, type: 3}
   firePoint: {fileID: 1982243739721854910}
-  shootInterval: 3
+  fireballInterval: 1
+  summonInterval: 5
   enemyPrefabs:
   - {fileID: 3312540886226375721, guid: 02ea04b8087ad48f1a972e105a770086, type: 3}
   - {fileID: 6224692419649228777, guid: 7c443a9b3abf846fdb57ac146bab11bb, type: 3}
@@ -250,6 +252,23 @@ MonoBehaviour:
   - {fileID: 2836745547728631630}
   - {fileID: 328807107852262601}
   - {fileID: 8269446270188334356}
+--- !u!114 &1118146871571954982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5434097372080827761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952d01126afdf420c921dbf212eec608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  currentHealth: 0
+  healthBarUI: {fileID: 0}
+  healthFill: {fileID: 0}
+  emblemIcon: {fileID: 0}
 --- !u!1 &5673603425186621810
 GameObject:
   m_ObjectHideFlags: 0

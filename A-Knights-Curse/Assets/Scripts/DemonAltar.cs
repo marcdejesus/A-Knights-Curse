@@ -7,6 +7,12 @@ public class DemonAltar : MonoBehaviour
     public Transform summonPoint;
     public GameObject altarPromptUI;
     public Text altarText;
+
+    // Boss UI References
+    public GameObject demonHPBarUI;
+    public Image demonHPFillImage;
+    public RectTransform demonEmblemIcon;
+
     private bool inRange = false;
     private bool hasSummoned = false;
 
@@ -39,7 +45,12 @@ public class DemonAltar : MonoBehaviour
 
     void SummonDemon()
     {
-        Instantiate(demonPrefab, summonPoint.position, Quaternion.identity);
+        GameObject demon = Instantiate(demonPrefab, summonPoint.position, Quaternion.identity);
+        
+        // Setup the boss health UI
+        BossHealth bossHealth = demon.GetComponent<BossHealth>();
+        bossHealth.SetupUI(demonHPBarUI, demonHPFillImage, demonEmblemIcon);
+        
         hasSummoned = true;
         altarPromptUI.SetActive(false);
     }
