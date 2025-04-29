@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Background
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1335733953
+    locked: 0
+  - name: Altar
+    uniqueID: 2383374445
+    locked: 0
+  - name: Player
+    uniqueID: 1948322365
+    locked: 0
+  - name: Anvil
+    uniqueID: 302209137
+    locked: 0
+  - name: Tree
+    uniqueID: 2316886105
     locked: 0
