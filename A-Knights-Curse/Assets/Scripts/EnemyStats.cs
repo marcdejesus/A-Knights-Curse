@@ -7,9 +7,20 @@ public class EnemyStats : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // Handle taking damage from sword
         if (collision.CompareTag("SwordSwing"))
         {
             TakeDamage(collision.GetComponent<SwordSwing>().damage);
+        }
+        
+        // Deal damage to player on contact
+        if (collision.CompareTag("Player"))
+        {
+            PlayerStats playerStats = collision.GetComponent<PlayerStats>();
+            if (playerStats != null)
+            {
+                playerStats.TakeDamage(damage);
+            }
         }
     }
 

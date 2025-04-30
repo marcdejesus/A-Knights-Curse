@@ -6,16 +6,38 @@ public class BossHealth : MonoBehaviour
 {
     public int maxHealth = 200;
     public int currentHealth;
+    public int contactDamage = 20;  // Damage dealt to player on contact
 
     public GameObject healthBarUI;    // DemonHPBackground
     public Image healthFill;          // DemonHPFill
-    public RectTransform emblemIcon;  // DemonEmblem
-
-    private float healthBarFullWidth;
+    public RectTransform emblemIcon;  // DemonEmblem - Now static, won't move with health
 
     void Start()
     {
         currentHealth = maxHealth;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Take damage from sword
+        if (collision.CompareTag("SwordSwing"))
+        {
+            SwordSwing sword = collision.GetComponent<SwordSwing>();
+            if (sword != null)
+            {
+                TakeDamage(sword.damage);
+            }
+        }
+
+        // Deal damage to player on contact
+        if (collision.CompareTag("Player"))
+        {
+            PlayerStats playerStats = collision.GetComponent<PlayerStats>();
+            if (playerStats != null)
+            {
+                playerStats.TakeDamage(contactDamage);
+            }
+        }
     }
 
     public void SetupUI(GameObject healthBarUI, Image healthFill, RectTransform emblem)
@@ -23,9 +45,7 @@ public class BossHealth : MonoBehaviour
         this.healthBarUI = healthBarUI;
         this.healthFill = healthFill;
         this.emblemIcon = emblem;
-
         healthBarUI.SetActive(true);
-        healthBarFullWidth = healthFill.rectTransform.sizeDelta.x;
     }
 
     public void TakeDamage(int damage)
@@ -41,12 +61,9 @@ public class BossHealth : MonoBehaviour
 
     void UpdateHealthBar()
     {
+        // Only update the health fill amount, emblem stays static
         float healthPercent = (float)currentHealth / maxHealth;
         healthFill.fillAmount = healthPercent;
-
-        // Move DemonEmblem to match the end of the health bar
-        float newEmblemX = healthBarFullWidth * healthPercent;
-        emblemIcon.anchoredPosition = new Vector2(newEmblemX, emblemIcon.anchoredPosition.y);
     }
 
     void Die()
