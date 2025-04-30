@@ -7,10 +7,22 @@ public class EnemyStats : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // Make sure collision is valid
+        if (collision == null)
+            return;
+        
         // Handle taking damage from sword
         if (collision.CompareTag("SwordSwing"))
         {
-            TakeDamage(collision.GetComponent<SwordSwing>().damage);
+            SwordSwing swordSwing = collision.GetComponent<SwordSwing>();
+            if (swordSwing != null)
+            {
+                TakeDamage(swordSwing.damage);
+            }
+            else
+            {
+                TakeDamage(10);
+            }
         }
         
         // Deal damage to player on contact
@@ -35,7 +47,11 @@ public class EnemyStats : MonoBehaviour
 
     void Die()
     {
-        FindObjectOfType<BloodEssenceManager>().AddEssence(1); // +1 Blood Essence
+        BloodEssenceManager bloodManager = FindObjectOfType<BloodEssenceManager>();
+        if (bloodManager != null)
+        {
+            bloodManager.AddEssence(1); // +1 Blood Essence
+        }
         Destroy(gameObject);
     }
 }

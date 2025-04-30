@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2491720301710109390}
   - component: {fileID: 4915770122808211552}
   - component: {fileID: 4580546689002379991}
+  - component: {fileID: 3613170653490713453}
   m_Layer: 0
   m_Name: SwordSwing
   m_TagString: SwordSwing
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4040556284266791037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1, y: -2.7, z: -14.13503}
+  m_LocalPosition: {x: -13.303514, y: -6.3217435, z: -14.13503}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -97,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 4040556284266791037}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 525725c843ba2428697d5229e2aae612, type: 2}
+  m_Controller: {fileID: 9100000, guid: afabf0ddeb2ec41ff9485310bb430c85, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -180,3 +181,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3613170653490713453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040556284266791037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c186afbe02ef4773b44393fccf91a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  spriteRenderer: {fileID: 0}
+  offsetX: 1
+  lifetime: 0.35
+  parentAttackScript: {fileID: 0}

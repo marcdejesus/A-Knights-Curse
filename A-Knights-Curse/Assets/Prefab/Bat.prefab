@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 485a5773adccb44dbbf1a8bf6d8dd262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
 --- !u!114 &4474182859003733959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,5 +185,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf8b69ce21714e9a8f1fa56528a2892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
-  damage: 10
+  health: 10
+  damage: 25
