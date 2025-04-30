@@ -9,6 +9,11 @@ public class PlayerHealthBarSetup : MonoBehaviour
     public Image healthFillImage;         // The fill image that shows current health
     public Text healthValueText;          // Optional: displays numeric health values
     
+    [Header("Stats Display Elements")]
+    public Text damageStatText;           // Text element to display damage stat
+    public Text speedStatText;            // Text element to display speed stat
+    public Text maxHealthStatText;        // Text element to display max health stat
+    
     [Header("UI Settings")]
     public Color healthBarColor = Color.red; // Default color if you want to set it once at start
     public bool useCustomColor = false;      // Whether to apply the color above
@@ -54,14 +59,22 @@ public class PlayerHealthBarSetup : MonoBehaviour
             healthFillImage.color = healthBarColor;
         }
         
-        // Connect the UI to the player stats component
+        // Connect the health UI to the player stats component
         playerStats.healthBarUI = healthBarContainer;
         playerStats.healthFill = healthFillImage;
         playerStats.healthText = healthValueText;
         
+        // Connect the stats display UI elements
+        playerStats.damageStatText = damageStatText;
+        playerStats.speedStatText = speedStatText;
+        playerStats.maxHealthStatText = maxHealthStatText;
+        
         // Make sure the health bar starts with the correct value
         playerStats.UpdateHealthBar();
         
-        Debug.Log("Player health bar successfully connected to PlayerStats");
+        // Initialize the stats display
+        playerStats.UpdateStatsDisplay();
+        
+        Debug.Log("Player health bar and stats display successfully connected to PlayerStats");
     }
 } 

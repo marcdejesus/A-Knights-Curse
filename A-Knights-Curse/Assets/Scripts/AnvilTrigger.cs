@@ -299,8 +299,8 @@ public class AnvilTrigger : MonoBehaviour
         playerStats.moveSpeed += speedIncreasePerUpgrade;
         playerStats.damage += damageIncreasePerUpgrade;
         
-        // Update player's health display if needed
-        playerStats.UpdateHealthAfterUpgrade();
+        // Update player's stats display
+        playerStats.UpdateStats();
         
         Debug.Log("Player upgraded! New stats: HP=" + playerStats.maxHealth + 
                  ", Speed=" + playerStats.moveSpeed + 

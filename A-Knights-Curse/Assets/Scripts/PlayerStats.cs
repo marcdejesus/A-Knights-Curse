@@ -23,6 +23,11 @@ public class PlayerStats : MonoBehaviour
     public GameObject healthBarUI;    // Main health bar container
     public Image healthFill;          // Health fill image that changes with health
     public Text healthText;           // Optional: text showing numeric health value
+    
+    [Header("Stats Display UI")]
+    public Text damageStatText;       // Text element to display damage stat
+    public Text speedStatText;        // Text element to display speed stat
+    public Text maxHealthStatText;    // Text element to display max health stat
 
     private bool isInvulnerable = false;
     private float lastDamageTime;
@@ -33,8 +38,9 @@ public class PlayerStats : MonoBehaviour
         currentHealth = maxHealth;
         lastDamageTime = -regenDelay; // Allow immediate regen at start if needed
         
-        // Initialize the health bar
+        // Initialize the health bar and stats display
         UpdateHealthBar();
+        UpdateStatsDisplay();
     }
 
     void Update()
@@ -43,6 +49,28 @@ public class PlayerStats : MonoBehaviour
         if (!isRegenerating && Time.time >= lastDamageTime + regenDelay)
         {
             StartCoroutine(RegenerateHealth());
+        }
+    }
+
+    // Updates all the stat text displays with current values
+    public void UpdateStatsDisplay()
+    {
+        // Update damage stat display
+        if (damageStatText != null)
+        {
+            damageStatText.text = "Attack: " + damage;
+        }
+        
+        // Update speed stat display
+        if (speedStatText != null)
+        {
+            speedStatText.text = "Speed: " + moveSpeed.ToString("F1");
+        }
+        
+        // Update max health stat display
+        if (maxHealthStatText != null)
+        {
+            maxHealthStatText.text = "Max Health: " + maxHealth;
         }
     }
 
@@ -89,6 +117,18 @@ public class PlayerStats : MonoBehaviour
         {
             healthText.text = currentHealth + " / " + maxHealth;
         }
+    }
+    
+    // Update stats after an upgrade or change
+    public void UpdateStats()
+    {
+        // Update the health display
+        UpdateHealthAfterUpgrade();
+        
+        // Update the stats display
+        UpdateStatsDisplay();
+        
+        Debug.Log("Player stats updated - Damage: " + damage + ", Speed: " + moveSpeed + ", Max Health: " + maxHealth);
     }
     
     // Add this method to update health display after upgrades
@@ -175,5 +215,16 @@ public class PlayerStats : MonoBehaviour
         }
         
         UpdateHealthBar();
+    }
+    
+    // Helper method to setup stats display UI elements at runtime
+    public void SetupStatsDisplay(Text damageText, Text speedText, Text maxHealthText)
+    {
+        damageStatText = damageText;
+        speedStatText = speedText;
+        maxHealthStatText = maxHealthText;
+        
+        // Update the displays immediately
+        UpdateStatsDisplay();
     }
 }
