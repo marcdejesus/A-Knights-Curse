@@ -9,7 +9,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (collision.CompareTag("SwordSwing"))
         {
-            //TakeDamage(collision.GetComponent<SwordSwing>().damage);
+            TakeDamage(collision.GetComponent<SwordSwing>().damage);
         }
     }
 
